@@ -34,11 +34,13 @@ public class TeacherDaoImpl implements TeacherDao {
 	@Override
 	public List<Teacher> updateTeacher(Teacher teacher) {
 		
-		Query query = getSession().createQuery("update Teacher me set fname=:fname,lname=:lname,age=:age,gender=:gender,phone=:phone where teacherId =:tid");
+		Query query = getSession().createQuery("update Teacher me set firstname=:fname,lastname=:lname,age=:age,gender=:gender,phone=:phone, password=:pass where teacherId =:tid");
 		query.setParameter("fname", teacher.getFirstname());
 		query.setParameter("lname", teacher.getLastname());
 		query.setParameter("age", teacher.getAge());
 		query.setParameter("gender", teacher.getGender());
+		query.setParameter("phone", teacher.getPhone());
+		query.setParameter("pass", teacher.getPassword());
 		query.setParameter("tid", teacher.getTeacherId());
 		
 		int noofrows = query.executeUpdate();
