@@ -1,5 +1,7 @@
 package com.saurabh.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Course {
+public class Course implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

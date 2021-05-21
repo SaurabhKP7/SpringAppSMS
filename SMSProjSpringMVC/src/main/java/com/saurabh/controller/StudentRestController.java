@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.saurabh.entity.Student;
 import com.saurabh.service.StudentService;
@@ -53,6 +54,25 @@ public class StudentRestController {
 		}
 		
 		return new ResponseEntity<List<Student>>(li, HttpStatus.OK);
+		
+	}
+	
+	
+	@GetMapping("/validate/email={email}&password={password}")
+	private ResponseEntity<Student> validateStudent(@PathVariable("email") String email, @PathVariable("password") String password) {
+		
+		Student s = new Student();
+		s.setEmail(email);
+		s.setPassword(password);
+		Student student = studentService.getStudent(s);
+		System.out.println(student);
+		
+		if(student == null) {
+			
+			return new ResponseEntity<Student>(HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<Student>(student, HttpStatus.OK);
 		
 	}
 	

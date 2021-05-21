@@ -1,8 +1,10 @@
 package com.saurabh.entity;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,7 +17,7 @@ import javax.persistence.OneToMany;
 import com.saurabh.mapped.Person;
 
 @Entity
-public class Teacher extends Person{
+public class Teacher extends Person implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +25,7 @@ public class Teacher extends Person{
 	
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher", cascade = CascadeType.ALL)
-	private Collection<Course> course = new LinkedHashSet<Course>();
+	private Set<Course> course = new LinkedHashSet<Course>();
 
 	
 	
@@ -58,19 +60,19 @@ public class Teacher extends Person{
 	}
 
 
-	public Collection<Course> getCourse() {
-		return course;
-	}
-
-
-	public void setCourse(Collection<Course> course) {
-		this.course = course;
-	}
+//	public Set<Course> getCourse() {
+//		return course;
+//	}
+//
+//
+//	public void setCourse(Set<Course> course) {
+//		this.course = course;
+//	}
 
 
 	@Override
 	public String toString() {
-		return "Teacher [teacherId=" + teacherId + ", course=" + course + ", firstname=" + firstname + ", lastname="
+		return "Teacher [teacherId=" + teacherId + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", age=" + age + ", gender=" + gender + ", phone=" + phone + ", email=" + email
 				+ ", password=" + password + "]";
 	}

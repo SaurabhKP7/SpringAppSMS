@@ -34,11 +34,11 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public List<Course> updateCourse(Course course) {
 		
-		Query query = getSession().createQuery("update Course me set courseName=:cname,course_duration_months=:cdm,feeId=:fid,teacherId=:tid where courseId =:cid");
+		Query query = getSession().createQuery("update Course me set courseName=:cname,course_duration_months=:cdm,fee=:fee,teacher=:t where courseId =:cid");
 		query.setParameter("cname", course.getCourseName());
 		query.setParameter("cdm", course.getCourse_duration_months());
-		query.setParameter("fid", course.getFee());
-		query.setParameter("tid", course.getTeacher());
+		query.setParameter("fee", course.getFee());
+		query.setParameter("t", course.getTeacher());
 		query.setParameter("cid", course.getCourseId());
 		
 		int noofrows = query.executeUpdate();

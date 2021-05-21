@@ -1,5 +1,7 @@
 package com.saurabh.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.persistence.OneToOne;
 import com.saurabh.mapped.Person;
 
 @Entity
-public class Student extends Person {
+public class Student extends Person implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
