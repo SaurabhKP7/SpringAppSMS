@@ -28,7 +28,7 @@ public class TeacherRestController {
 	TeacherService teacherService;
 	
 	@GetMapping("/getlist")
-	private ResponseEntity<List<Teacher>> allTeacher() {
+	public ResponseEntity<List<Teacher>> allTeacher() {
 		
 		List<Teacher> li = teacherService.getTeacherList();
 		System.out.println(li);

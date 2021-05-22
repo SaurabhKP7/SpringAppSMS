@@ -36,13 +36,14 @@ public class StudentDaoImpl implements StudentDao{
 	@Override
 	public List<Student> updateStudent(Student student) {
 		
-		Query query = getSession().createQuery("update Student me set firstname=:fname,lastname=:lname,age=:age,gender=:gender,phone=:phone, course=:course where studentId =:sid");
+		Query query = getSession().createQuery("update Student me set firstname=:fname,lastname=:lname,age=:age,gender=:gender,phone=:phone, registerDate=:rd, course=:course where studentId =:sid");
 		query.setParameter("fname", student.getFirstname());
 		query.setParameter("lname", student.getLastname());
 		query.setParameter("age", student.getAge());
 		query.setParameter("gender", student.getGender());
 		query.setParameter("phone", student.getPhone());
 		query.setParameter("course", student.getCourse());
+		query.setParameter("rd", student.getRegisterDate());
 		query.setParameter("sid", student.getStudentId());
 		
 		int noofrows = query.executeUpdate();

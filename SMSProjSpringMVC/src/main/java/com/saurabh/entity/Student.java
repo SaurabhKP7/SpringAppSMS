@@ -1,6 +1,7 @@
 package com.saurabh.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ public class Student extends Person implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int studentId;
+	
+	private Date registerDate;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "courseId")
@@ -59,13 +62,25 @@ public class Student extends Person implements Serializable{
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	
+	
+
+	public Date getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(Date registerDate) {
+		this.registerDate = registerDate;
+	}
 
 	@Override
 	public String toString() {
-		return "Student [studentId=" + studentId + ", course=" + course + ", firstname=" + firstname + ", lastname="
-				+ lastname + ", age=" + age + ", gender=" + gender + ", phone=" + phone + ", email=" + email
-				+ ", password=" + password + "]";
+		return "Student [studentId=" + studentId + ", registerDate=" + registerDate + ", course=" + course
+				+ ", firstname=" + firstname + ", lastname=" + lastname + ", age=" + age + ", gender=" + gender
+				+ ", phone=" + phone + ", email=" + email + ", password=" + password + "]";
 	}
+
+	
 
 	
 	
