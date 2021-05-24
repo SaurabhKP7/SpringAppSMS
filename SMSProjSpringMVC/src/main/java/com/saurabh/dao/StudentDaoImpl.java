@@ -11,20 +11,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.saurabh.entity.Student;
 
+// TODO: Auto-generated Javadoc
+/**
+ * This Class is used to perform CRUD
+ * operations on Student Entity which interacts
+ * with the Database
+ * @author Saurabh Prasad
+ * @version 1.0
+ * The Class StudentDaoImpl.
+ */
 @Repository
 public class StudentDaoImpl implements StudentDao{
 
 	
 	
+	/** The session factory. */
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Gets the current session.
+	 *
+	 * @return the session
+	 */
 	protected Session getSession() {
 		
 		return sessionFactory.getCurrentSession();
 	}
 	
 	
+	/**
+	 * Creates the student.
+	 * 
+	 * @param student the student
+	 */
 	@Override
 	public void createStudent(Student student) {
 		
@@ -33,6 +53,12 @@ public class StudentDaoImpl implements StudentDao{
 		
 	}
 
+	/**
+	 * Update student.
+	 *
+	 * @param student the student
+	 * @return the list
+	 */
 	@Override
 	public List<Student> updateStudent(Student student) {
 		
@@ -53,6 +79,12 @@ public class StudentDaoImpl implements StudentDao{
 		return getStudentList();
 	}
 
+	/**
+	 * Delete student.
+	 *
+	 * @param studentId the student id
+	 * @return the list
+	 */
 	@Override
 	public List<Student> deleteStudent(int studentId) {
 		
@@ -67,6 +99,12 @@ public class StudentDaoImpl implements StudentDao{
 	}
 
 
+	/**
+	 * Search for a student.
+	 *
+	 * @param studentId the student id
+	 * @return the list
+	 */
 	@Override
 	public List<Student> searchStudent(int studentId) {
 		
@@ -78,6 +116,11 @@ public class StudentDaoImpl implements StudentDao{
 	}
 
 
+	/**
+	 * Gets the student list.
+	 *
+	 * @return the student list
+	 */
 	@Override
 	public List<Student> getStudentList() {
 		Query query = getSession().createQuery("select me from Student me");
@@ -86,6 +129,12 @@ public class StudentDaoImpl implements StudentDao{
 	}
 
 
+	/**
+	 * Gets the student record and validates email and password.
+	 *
+	 * @param student the student
+	 * @return the student
+	 */
 	@Override
 	public Student getStudent(Student student) {
 		

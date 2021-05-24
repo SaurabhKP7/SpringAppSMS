@@ -1,9 +1,7 @@
 package com.saurabh.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,14 +14,25 @@ import javax.persistence.OneToMany;
 
 import com.saurabh.mapped.Person;
 
+// TODO: Auto-generated Javadoc
+/**
+ * This Class is a Teacher Entity which has all 
+ * the variables related to teacher details  and has a
+ * many-to-one relationship with Course Entity
+ * @author Sasikiran Putta
+ * @version 1.0
+ * The Class Teacher.
+ */
 @Entity
 public class Teacher extends Person implements Serializable{
 
+	/** The teacher id. */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int teacherId;
 	
 	
+	/** The course. */
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher", cascade = CascadeType.ALL)
 	private Set<Course> course = new LinkedHashSet<Course>();
 
@@ -50,11 +59,21 @@ public class Teacher extends Person implements Serializable{
 //	}
 
 
-	public int getTeacherId() {
+	/**
+ * Gets the teacher id.
+ *
+ * @return the teacher id
+ */
+public int getTeacherId() {
 		return teacherId;
 	}
 
 
+	/**
+	 * Sets the teacher id.
+	 *
+	 * @param teacherId the new teacher id
+	 */
 	public void setTeacherId(int teacherId) {
 		this.teacherId = teacherId;
 	}
@@ -70,7 +89,12 @@ public class Teacher extends Person implements Serializable{
 //	}
 
 
-	@Override
+	/**
+ * To string.
+ *
+ * @return the string
+ */
+@Override
 	public String toString() {
 		return "Teacher [teacherId=" + teacherId + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", age=" + age + ", gender=" + gender + ", phone=" + phone + ", email=" + email

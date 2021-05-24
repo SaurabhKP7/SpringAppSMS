@@ -1,3 +1,7 @@
+/*
+ * @author Saurabh Prasad
+ * @version 1.0
+ */
 package com.saurabh.dao;
 
 import java.util.List;
@@ -10,20 +14,44 @@ import org.springframework.stereotype.Repository;
 
 import com.saurabh.entity.Course;
 
+
+
+// TODO: Auto-generated Javadoc
+/**
+ * This Class is used to perform CRUD
+ * operations on Course Entity which interacts
+ * with the Database
+ * 
+ * @author Saurabh Prasad
+ * @version 1.0
+ *
+ * The Class CourseDaoImpl.
+ */
 @Repository
 public class CourseDaoImpl implements CourseDao {
 
 	
 	
+	/** The session factory. */
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Gets the current session.
+	 *
+	 * @return the session
+	 */
 	protected Session getSession() {
 		
 		return sessionFactory.getCurrentSession();
 	}
 	
 	
+	/**
+	 * Creates the course.
+	 *
+	 * @param course the course
+	 */
 	@Override
 	public void createCourse(Course course) {
 		
@@ -31,6 +59,13 @@ public class CourseDaoImpl implements CourseDao {
 		System.out.println("Course Saved Successfully");
 	}
 
+	
+	/**
+	 * Update course.
+	 *
+	 * @param course the course
+	 * @return the list
+	 */
 	@Override
 	public List<Course> updateCourse(Course course) {
 		
@@ -48,6 +83,14 @@ public class CourseDaoImpl implements CourseDao {
 		return getCourseList();
 	}
 
+	
+	
+	/**
+	 * Delete course.
+	 *
+	 * @param courseId the course id
+	 * @return the list
+	 */
 	@Override
 	public List<Course> deleteCourse(int courseId) {
 		Query query = getSession().createQuery("delete Course me where courseId =:cid");
@@ -60,6 +103,12 @@ public class CourseDaoImpl implements CourseDao {
 		return getCourseList();
 	}
 
+	/**
+	 * Search for a course.
+	 *
+	 * @param courseId the course id
+	 * @return the list
+	 */
 	@Override
 	public List<Course> searchCourse(int courseId) {
 		
@@ -70,6 +119,11 @@ public class CourseDaoImpl implements CourseDao {
 		return courseList;
 	}
 
+	/**
+	 * Gets the course list.
+	 *
+	 * @return the course list
+	 */
 	@Override
 	public List<Course> getCourseList() {
 		

@@ -15,6 +15,11 @@
 	<context:property-placeholder location="classpath:database.properties"/>
 	<tx:annotation-driven/>
 	<mvc:annotation-driven/>
+	<bean id="swagger2Config"
+      class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration">
+	</bean>
+
+
 	
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	  <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>

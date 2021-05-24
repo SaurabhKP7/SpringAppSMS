@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.saurabh.controller;
 
 import java.util.List;
@@ -19,14 +22,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.saurabh.entity.Teacher;
 import com.saurabh.service.TeacherService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * This Class is used to handle all
+ * the REST APIs related to the Teacher Entity.
+ *
+ * @author Rachana Upputuru
+ * @version 1.0
+ * The Class TeacherRestController.
+ */
 @RestController
 @RequestMapping("/teacher")
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "false", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT}, allowedHeaders = "*")
 public class TeacherRestController {
 
+	/** The teacher service. */
 	@Autowired
 	TeacherService teacherService;
 	
+	/**
+	 * Gets the Teacher List.
+	 *
+	 * @return the response entity
+	 */
 	@GetMapping("/getlist")
 	public ResponseEntity<List<Teacher>> allTeacher() {
 		
@@ -42,8 +60,14 @@ public class TeacherRestController {
 		
 	}
 	
+	/**
+	 * Gets the teacher record.
+	 *
+	 * @param teacherId the teacher id
+	 * @return the teacher
+	 */
 	@GetMapping("/getrecord/{id}")
-	private ResponseEntity<List<Teacher>> getTeacher(@PathVariable("id") int teacherId) {
+	public ResponseEntity<List<Teacher>> getTeacher(@PathVariable("id") int teacherId) {
 		
 		List<Teacher> li = teacherService.searchTeacher(teacherId);
 		System.out.println(li);
@@ -57,15 +81,27 @@ public class TeacherRestController {
 		
 	}
 	
+	/**
+	 * Creates the teacher.
+	 *
+	 * @param teacher the teacher
+	 * @return the teacher
+	 */
 	@PostMapping("/insert")
-	private Teacher createTeacher(@RequestBody Teacher teacher) {
+	public Teacher createTeacher(@RequestBody Teacher teacher) {
 		
 		teacherService.createTeacher(teacher);
 		return teacher;
 	}
 	
+	/**
+	 * Delete teacher.
+	 *
+	 * @param teacherId the teacher id
+	 * @return the response entity
+	 */
 	@DeleteMapping("/delete/{id}")
-	private ResponseEntity<List<Teacher>> deleteTeacher(@PathVariable("id") int teacherId) {
+	public ResponseEntity<List<Teacher>> deleteTeacher(@PathVariable("id") int teacherId) {
 		
 		List<Teacher> li = teacherService.deleteTeacher(teacherId);
 		System.out.println(li);
@@ -80,8 +116,14 @@ public class TeacherRestController {
 	}
 	
 	
+	/**
+	 * Update teacher.
+	 *
+	 * @param teacher the teacher
+	 * @return the response entity
+	 */
 	@PutMapping("/update")
-	private ResponseEntity<List<Teacher>> updateTeacher(@RequestBody Teacher teacher) {
+	public ResponseEntity<List<Teacher>> updateTeacher(@RequestBody Teacher teacher) {
 		
 		List<Teacher> li = teacherService.updateTeacher(teacher);
 		System.out.println(li);

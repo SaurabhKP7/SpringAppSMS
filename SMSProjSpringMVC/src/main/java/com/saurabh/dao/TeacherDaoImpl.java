@@ -12,25 +12,51 @@ import org.springframework.stereotype.Repository;
 
 import com.saurabh.entity.Teacher;
 
+// TODO: Auto-generated Javadoc
+/**
+ * This Class is used to perform CRUD
+ * operations on Teacher Entity which interacts
+ * with the Database
+ * @author Saurabh Prasad
+ * @version 1.0
+ * The Class TeacherDaoImpl.
+ */
 @Repository
 public class TeacherDaoImpl implements TeacherDao {
 
 	
 	
+	/** The session factory. */
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	/**
+	 * Gets the current session.
+	 *
+	 * @return the session
+	 */
 	protected Session getSession() {
 		
 		return sessionFactory.getCurrentSession();
 	}
 	
+	/**
+	 * Creates the teacher.
+	 *
+	 * @param teacher the teacher
+	 */
 	@Override
 	public void createTeacher(Teacher teacher) {
 		
 		getSession().saveOrUpdate(teacher);
 	}
 
+	/**
+	 * Update teacher.
+	 *
+	 * @param teacher the teacher
+	 * @return the list
+	 */
 	@Override
 	public List<Teacher> updateTeacher(Teacher teacher) {
 		
@@ -50,6 +76,12 @@ public class TeacherDaoImpl implements TeacherDao {
 		return getTeacherList();
 	}
 
+	/**
+	 * Delete teacher.
+	 *
+	 * @param teacherId the teacher id
+	 * @return the list
+	 */
 	@Override
 	public List<Teacher> deleteTeacher(int teacherId) {
 		
@@ -63,6 +95,12 @@ public class TeacherDaoImpl implements TeacherDao {
 		return getTeacherList();
 	}
 
+	/**
+	 * Search for a teacher.
+	 *
+	 * @param teacherId the teacher id
+	 * @return the list
+	 */
 	@Override
 	public List<Teacher> searchTeacher(int teacherId) {
 		
@@ -73,6 +111,11 @@ public class TeacherDaoImpl implements TeacherDao {
 		return teacherList;
 	}
 
+	/**
+	 * Gets the teacher list.
+	 *
+	 * @return the teacher list
+	 */
 	@Override
 	public List<Teacher> getTeacherList() {
 		
@@ -81,6 +124,12 @@ public class TeacherDaoImpl implements TeacherDao {
 		return teacherList;
 	}
 
+	/**
+	 * Gets the teacher and validates email and password.
+	 *
+	 * @param teacher the teacher
+	 * @return the teacher
+	 */
 	@Override
 	public Teacher getTeacher(Teacher teacher) {
 		
