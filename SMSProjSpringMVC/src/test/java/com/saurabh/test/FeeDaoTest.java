@@ -93,7 +93,7 @@ public class FeeDaoTest {
 		System.out.println(fees.get(0));
 //		assertTrue((feeDao.getFeeList()).size() >= 1);
 //		assertTrue((fees.get(1)).getFeeAmount()==1499);
-		assertEquals(fees.get(0).getFeeAmount(), 1588);
+		assertEquals(fees.get(0).getFeeAmount(), 2499);
 	}
 	
 	/**
@@ -104,10 +104,10 @@ public class FeeDaoTest {
 	{
 		Fee f = new Fee();
 		f.setFeeAmount(1588);
-		f.setPaymentMode("UPI");
-		f.setFeeId(2);
+		f.setPaymentMode("NET BANKING");
+		f.setFeeId(5);
 		List<Fee> fees = feeDao.updateFee(f);
-		assertEquals(fees.get(0).getPaymentMode(),"UPI");
+		assertEquals(fees.get(0).getPaymentMode(),"NET BANKING");
 		
 	}
 //	@Test

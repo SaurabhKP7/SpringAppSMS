@@ -32,8 +32,8 @@ import com.saurabh.service.FeeService;
  * The Class FeeRestController.
  */
 @RestController
-@RequestMapping(value = "/fee")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "false", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT}, allowedHeaders = "*")
+@RequestMapping(value = { "/api","/fee"})
+@CrossOrigin(origins = "*", allowCredentials = "false", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT}, allowedHeaders = "*")
 public class FeeRestController {
 
 	/** The fee service. */

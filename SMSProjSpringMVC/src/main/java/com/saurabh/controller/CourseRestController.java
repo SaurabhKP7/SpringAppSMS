@@ -30,8 +30,8 @@ import com.saurabh.service.CourseService;
  * The Class CourseRestController.
  */
 @RestController
-@RequestMapping("/course")
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "false", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT}, allowedHeaders = "*")
+@RequestMapping(value = { "/api","/course"})
+@CrossOrigin(origins = "*", allowCredentials = "false", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT}, allowedHeaders = "*")
 public class CourseRestController {
 
 	/** The course service. */
